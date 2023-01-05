@@ -5,17 +5,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>show</h1>
+<h3 align="center">Employee Details</h3>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*@<th>
                 @Html.DisplayNameFor(model => model.Id)
-            </th>
+            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
@@ -23,20 +20,23 @@
                 @Html.DisplayNameFor(model => model.LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PhotoUrl)
+                @*@Html.DisplayNameFor(model => model.PhotoUrl)*@
+                Photo
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.EmpCode)
+            </th>*@
+            <th>
+                Assign Badge
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
-            </td>
+            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
@@ -44,17 +44,23 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PhotoUrl)
+                @*@Html.DisplayFor(modelItem => item.PhotoUrl)*@
+                    <img src="@Url.Content(@item.PhotoUrl)" target="_blank" class="btn btn-link text-primary one" asp-append-version="true" width="120px" height="120px"></img>
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.EmpCode)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+             <td>
+                    <a href="/Home/Badge?fn=@item.FirstName&ln=@item.LastName&ecode=@item.EmpCode" class="btn btn-link text-primary one" onclick="return confirm('Are you sure you want assign a badge?')"> This is me</a>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<footer>
+    <div>
+        <a asp-action="SignIn">Back to Search</a>
+    </div>
+</footer>
+

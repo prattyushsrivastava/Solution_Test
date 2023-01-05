@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Models;
 
-public partial class KitchenerBadgeSystemContext : DbContext
+public partial class KitchenerBadgeSystemContext : IdentityDbContext
+
 {
     public KitchenerBadgeSystemContext()
     {
@@ -25,6 +27,7 @@ public partial class KitchenerBadgeSystemContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Employee>(entity =>
         {
             entity.HasKey(e => e.EmpCode);

@@ -15,7 +15,7 @@ public partial class Guard
 
     public DateTime SignIn { get; set; }
 
-    public DateTime? SignOut { get; set; }
+    public DateTime SignOut { get; set; }
 
     public int EmpCode { get; set; }
 

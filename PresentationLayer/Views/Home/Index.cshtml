@@ -1,32 +1,48 @@
-﻿@{
+﻿@inject SignInManager<IdentityUser> signInManager;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="container-fluid home" >
     <div>
         <nav class="navbar navbar-expand-lg bg-primary navbar-dark homeNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="BadgeQueue">Badge Queue</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="BadgeOut">Badge Out</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-action="BadgeReport">Badge Report</a>
-                </li>
-            </ul>
+           @* @if (signInManager.IsSignedIn(User)){
+                    <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="BadgeQueue">Badge Queue</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" asp-action="BadgeOut">Badge Out</a>
+                   </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="GetBadges">Badge Report</a>
+                     </li>
+                </ul>
+
+            }
+            else{
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" asp-action="Index">Home</a>
+                    </li>
+                    
+                </ul>
+            }
+            *@
         </nav>
     </div>
+    <br/>
+    <br/>
     <div class="Sign">
-        <div class="SignIn">
-            <a asp-action="SignIn" class="btn btn-primary btn-lg">Sign In</a>
+        <div >
+            <a asp-action="SignIn" class="btn btn-primary btn-lg">Assign Badge</a>
         </div>
-        <div class="SignOut">
-            <a asp-action="SignOut" class="btn btn-primary btn-lg">Sign Out</a>
+        <br/>
+        <div>
+            <a  asp-action="SignOut" class="btn btn-primary btn-lg">Cancel Badge</a>
         </div>
     </div>
 </div>

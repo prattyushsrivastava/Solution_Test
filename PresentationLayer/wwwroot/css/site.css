@@ -14,5 +14,25 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
+}
+
+.Sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8vh;
+    text-align: center
+}
+
+.SignIn, .SignOut {
+    background-color: turquoise;
+    width: 200px;
+    height: 200px;
+    margin-right: 6vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
 }

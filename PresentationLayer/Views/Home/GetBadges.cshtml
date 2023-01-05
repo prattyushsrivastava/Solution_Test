@@ -1,0 +1,109 @@
+﻿@model IEnumerable<DataAccessLayer.Models.Guard>
+
+@{
+    ViewData["Title"] = "GetBadges";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <form method="post" asp-action="GetBadges">
+        <table>
+            <tr>
+
+                <th>Enter Start Date</th>
+                <td><input type="datetime-local" name="start"/></td>
+                <th>Enter First Name</th>
+                <td><input type="text" name="fn" /></td>
+                <br><br>
+                <th>Inactive Only</th>
+                <td><input type="checkbox" name="Status" /></td>
+
+            </tr>
+            
+            <tr>
+                <th>Enter End Date</th>
+                <td><input type="datetime-local" name="end" /></td>
+                <th>Enter Last Name</th>
+                <td><input type="text" name="ln" /></td>
+                
+            </tr>
+            <tr style="align-items:center;justify-content:center;margin-left:50vh"  >
+                <td> <input type="submit" value="Search" asp-action="GetBadges" style="align-items:center;"></td>
+                
+            </tr>
+            <br>
+            <br>
+        </table>
+    </form>
+
+
+
+@using (Html.BeginForm("SignBadgeOut", "Home", FormMethod.Post, new { enctype = "multipart/form-data" })){
+    <h1 align="center">Badge Report</h1>
+
+
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>*@
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>*@
+                    <th>
+                       Name
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TemporaryBadge)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SignIn)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SignOut)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.EmpCode)
+                    </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>*@
+                        @*<td>
+                            
+                        </td>*@
+                        <td>
+                            <pre> @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</pre>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TemporaryBadge)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SignIn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SignOut)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.EmpCode)
+                        </td>*@
+                        @*<td>
+                            <a href="/Home/SignBadgeOut?id=@item.Id" class="btn btn-link text-primary one" onclick="return confirm('Are you sure, you want to SignOut badge?')"> Sign Out </a>
+                        </td>*@
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </form>
+
+}
+
+

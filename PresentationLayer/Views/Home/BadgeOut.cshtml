@@ -1,0 +1,30 @@
+﻿@model IEnumerable<DataAccessLayer.Models.BadgeOut>
+
+@{
+    ViewData["Title"] = "BadgeOutPage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 align="center">BadgeOut</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Badge</th>
+            <th>Assign Time(Sec)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><img src="@Url.Content(@item.PhotoUrl)" target="_blank" class="btn btn-link text-primary one" asp-append-version="true" width="120px" height="120px"></img></td>
+                <td>@item.Name</td>
+                <td>@item.TempBadge</td>
+                <td>@item.AssignTime</td>
+            </tr>
+        }
+    </tbody>
+</table>

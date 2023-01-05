@@ -1,6 +1,7 @@
 using BusinessLayer.Services;
 using DataAccessLayer.Models;
 using DataAccessLayer.Repository;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,9 +13,13 @@ builder.Services.AddDbContext<KitchenerBadgeSystemContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<KitchenerBadgeSystemContext>();
+
 builder.Services.AddTransient(typeof(IGenricRepository), typeof(GenricRepository));
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+
+builder.Services.AddScoped<IGuardService, GuardService>();
 
 var app = builder.Build();
 
@@ -30,7 +35,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

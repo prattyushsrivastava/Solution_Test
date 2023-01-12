@@ -12,7 +12,7 @@ namespace DataAccessLayer.Repository
     {
         public IEnumerable<Employee> GetEmployees(string fname, string lname);
 
-        public IEnumerable<Guard> SignInBadge(string fname,string lname, int ecode);
+        public string SignInBadge(string fname,string lname, int ecode);
 
         public IEnumerable<Guard> SignOutBadge(int id);
 

@@ -49,13 +49,15 @@ namespace PresentationLayer.Controllers
         }
 
         
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Badge(string fn, string ln, int ecode)
         {
             
-            _guardService.SignInBadge(fn,ln,ecode);
+            var emp=_guardService.SignInBadge(fn,ln,ecode);
 
-            return RedirectToAction(nameof(Index));
+            //return RedirectToAction(nameof(Index));
+            ViewBag.tbadge = emp;
+            return View();
         }
 
         [HttpGet]
@@ -63,7 +65,7 @@ namespace PresentationLayer.Controllers
         {
             _guardService.SignOutBadge(id);
             
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(SignOut));
         }
 
 
@@ -95,7 +97,7 @@ namespace PresentationLayer.Controllers
         public IActionResult SignOut(string TempBadge)
         {
             _guardService.SignOutPage(TempBadge);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("SignOut", "Home");
 
         }
 

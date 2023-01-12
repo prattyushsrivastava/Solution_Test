@@ -39,7 +39,7 @@ namespace BusinessLayer.Services
             return _repo.GetBadges();
         }
 
-        public IEnumerable<Guard> SignInBadge(string fname, string lname, int ecode)
+        public string SignInBadge(string fname, string lname, int ecode)
 
         {
             if (ecode == null ||fname==null )

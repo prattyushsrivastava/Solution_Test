@@ -14,6 +14,8 @@ namespace DataAccessLayer.Models
         public string Name { get; set; } = null!;
         public string TempBadge { get; set; } = null!;
 
+        public  string SignIn { get; set; }
+
         public string SignOut { get; set; } 
 
         public int AssignTime { get; set; }

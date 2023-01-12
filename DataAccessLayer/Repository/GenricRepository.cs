@@ -62,17 +62,17 @@ namespace DataAccessLayer.Repository
            
         }
 
-        public IEnumerable<Guard> SignInBadge(string fname, string lname, int ecode)
+        public string SignInBadge(string fname, string lname, int ecode)
         {
             
             const string alphanumericCharacters =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
-            "abcdefghijklmnopqrstuvwxyz" +
-            "0123456789@/#&*?+=%!";
+            //"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+            //"abcdefghijklmnopqrstuvwxyz" +
+            "0123456789@/#&*?+=!";
 
 
 
-            int needLength = 12;
+            int needLength = 4;
 
 
 
@@ -86,7 +86,7 @@ namespace DataAccessLayer.Repository
             ob1.TemporaryBadge = randomStr;
             _dbContext.Guards.Add(ob1);
             _dbContext.SaveChanges();
-            return _dbContext.Guards.ToList();
+            return ob1.TemporaryBadge;
             
         }
 
@@ -102,6 +102,27 @@ namespace DataAccessLayer.Repository
 
         public IEnumerable<Guard> GetBadges()
         {
+            //var data = (from p in _dbContext.Guards
+            //            select new BadgeOut
+            //            {
+            //                Name = p.FirstName + " " + p.LastName,
+            //                TempBadge = p.TemporaryBadge,
+            //                SignIn=p.SignIn.ToString(),
+            //                SignOut = p.SignOut.ToString(),
+
+            //            }).ToList();
+
+
+            //foreach (var report in data)
+            //{
+            //    if (report.SignOut == "0001-01-01 00:00:00.0000000")
+            //    {
+            //        report.SignOut = "Active";
+            //        //report.AssignTime = 0;
+
+            //    }
+            //}
+            //return data;
             return _dbContext.Guards.ToList();
 
         }

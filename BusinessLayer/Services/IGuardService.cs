@@ -9,7 +9,7 @@ namespace BusinessLayer.Services
 {
     public interface IGuardService
     {
-        public IEnumerable<Guard> SignInBadge(string fname, string lname, int ecode);
+        public string SignInBadge(string fname, string lname, int ecode);
 
         public IEnumerable<Guard> SignOutBadge(int id);
 

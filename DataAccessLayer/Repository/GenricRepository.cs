@@ -200,10 +200,16 @@ namespace DataAccessLayer.Repository
             var f = _dbContext.Guards.FirstOrDefault(x => x.TemporaryBadge == TBadge);
             if (f != null)
             {
-                f.SignOut = DateTime.Now;
+                //f.SignOut = DateTime.Now;
 
-                _dbContext.SaveChanges();
-                return _dbContext.Guards;
+                //_dbContext.SaveChanges();
+                //return _dbContext.Guards;
+                if (f.SignOut.ToString() == "1/1/0001 12:00:00 AM")
+                {
+                    f.SignOut = DateTime.Now;
+                    _dbContext.SaveChanges();
+                    return _dbContext.Guards;
+                }
 
             }
             return null;

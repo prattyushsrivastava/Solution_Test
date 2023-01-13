@@ -96,8 +96,16 @@ namespace PresentationLayer.Controllers
         [HttpPost]
         public IActionResult SignOut(string TempBadge)
         {
-            _guardService.SignOutPage(TempBadge);
-            return RedirectToAction("SignOut", "Home");
+            var tmp= _guardService.SignOutPage(TempBadge);
+            if (tmp==null)
+            {
+                TempData["error"] = "Wrong Input";
+            }
+            else
+            {
+                TempData["success"] = "Badge Signed Out";
+            }
+            return RedirectToAction(nameof(SignOut));
 
         }
 

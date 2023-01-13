@@ -25,6 +25,7 @@ namespace BusinessLayer.Services
 
         public IEnumerable<BadgeOut> GetBadgeQueue()
         {
+            
             return _repo.GetBadgeQueue();
         }
 

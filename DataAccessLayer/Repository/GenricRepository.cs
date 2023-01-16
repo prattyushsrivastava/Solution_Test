@@ -13,13 +13,14 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Repository
 {
     public class GenricRepository : IGenricRepository
+
     {
+
         private readonly KitchenerBadgeSystemContext _dbContext;
         //private readonly UserManager<IdentityUser> userManager;
         //private readonly SignInManager<IdentityUser> signInManager;
 
         private static Random rnd = new Random();
-     
 
         Guard ob1 = new Guard();
 
@@ -65,26 +66,26 @@ namespace DataAccessLayer.Repository
         public string SignInBadge(string fname, string lname, int ecode)
         {
             
-            const string alphanumericCharacters =
+           // const string alphanumericCharacters =
             //"ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
             //"abcdefghijklmnopqrstuvwxyz" +
-            "0123456789@/#&*?+=!";
+            //"0123456789@/#&*?+=!";
 
+            //int needLength = 4;
+            string temp = "BN-";
+            
 
-
-            int needLength = 4;
-
-
-
-            string randomStr = new string(Enumerable.Range(1, needLength)
-                .Select(_ => alphanumericCharacters[rnd.Next(alphanumericCharacters.Length)]).ToArray());
+            //string randomStr = new string(Enumerable.Range(1, needLength)
+            //    .Select(_ => alphanumericCharacters[rnd.Next(alphanumericCharacters.Length)]).ToArray());
 
             ob1.FirstName = fname;
             ob1.LastName = lname;
             ob1.EmpCode = ecode;
             ob1.SignIn = DateTime.Now;
-            ob1.TemporaryBadge = randomStr;
+            ob1.TemporaryBadge = temp;
             _dbContext.Guards.Add(ob1);
+            _dbContext.SaveChanges();
+            ob1.TemporaryBadge = temp + ob1.Id.ToString();
             _dbContext.SaveChanges();
             return ob1.TemporaryBadge;
             

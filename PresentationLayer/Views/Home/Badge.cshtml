@@ -16,7 +16,27 @@
     <a asp-action="Index">Back to List</a>
 </div>*@
 <div class="alert alert-dismissible alert-success">
-    <p>You have been assigned a Badge: <pre>@ViewBag.tbadge</pre></p>
-    <strong>Well done!</strong>
+    <strong><p>You have been assigned a Badge: </p></strong>
+    <input type="text" value="@ViewBag.tbadge" id="myInput" disabled>
+    <a onclick="myFunction()" class="btn btn-primary">Copy Badge</a>
+    <a asp-action="Index" class="btn btn-info" >Back &nbsp;</a>
 </div>
 
+@section Scripts{
+    <script>
+        function myFunction() {
+            // Get the text field
+            var copyText = document.getElementById("myInput");
+
+            // Select the text field
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the text inside the text field
+            navigator.clipboard.writeText(copyText.value);
+
+            // Alert the copied text
+            alert("Copied the text: " + copyText.value);
+        }
+    </script>
+}

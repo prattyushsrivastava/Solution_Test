@@ -66,50 +66,50 @@ namespace TestTempBadge.NewFolder
             return guards;
         }
 
-        //[Fact]
-        //public void SignInBadge_STest()
-        //{
-        //    var f = getGuardData();
+        [Fact]
+        public void SignInBadge_STest()
+        {
+            var f = getGuardData();
 
-        //    repoTest.Setup(x => x.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode)).Returns(f);
+            repoTest.Setup(x => x.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode)).Returns(f.ToString());
 
-        //    var test = new GuardService(repoTest.Object);
+            var test = new GuardService(repoTest.Object);
 
-        //    var result = test.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode);
+            var result = test.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode);
 
-        //    Assert.NotNull(result);
+            Assert.NotNull(result);
 
 
-        //}
+        }
 
-        //[Fact]
+        [Fact]
 
-        //public void SignInBadge_FTest()
-        //{
-        //    var f = getGuardData();
+        public void SignInBadge_FTest()
+        {
+            var f = getGuardData();
 
-        //    repoTest.Setup(x => x.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode)).Returns(f);
+            repoTest.Setup(x => x.SignInBadge(f[0].FirstName, f[0].LastName, f[0].EmpCode)).Returns(f.ToString());
 
-        //    var test = new GuardService(repoTest.Object);
+            var test = new GuardService(repoTest.Object);
 
-        //    var result = test.SignInBadge(null, f[0].LastName, 2);
+            var result = test.SignInBadge(null, f[0].LastName, 2);
 
-        //    Assert.Null(result);
-        //}
+            Assert.Null(result);
+        }
 
-        //[Fact]
-        //public void SignOutBadge_FTest()
-        //{
-        //    var f = getGuardData();
+        [Fact]
+        public void SignOutBadge_FTest()
+        {
+            var f = getGuardData();
 
-        //    repoTest.Setup(x => x.SignOutBadge(f[0].Id)).Returns(f);
+            repoTest.Setup(x => x.SignOutBadge(f[0].Id)).Returns(f);
 
-        //    var test = new GuardService(repoTest.Object);
+            var test = new GuardService(repoTest.Object);
 
-        //    var result = test.SignOutBadge(f[0].Id);
+            var result = test.SignOutBadge(f[0].Id);
 
-        //    Assert.Null(result);
-        //}
+            Assert.Null(result);
+        }
 
         [Fact]
         public void SignOutPage_FTest()

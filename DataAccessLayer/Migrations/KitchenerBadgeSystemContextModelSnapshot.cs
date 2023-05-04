@@ -77,7 +77,7 @@ namespace DataAccessLayer.Migrations
                     b.Property<DateTime>("SignIn")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("SignOut")
+                    b.Property<DateTime>("SignOut")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TemporaryBadge")
